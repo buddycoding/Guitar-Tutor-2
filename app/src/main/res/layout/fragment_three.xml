@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context=".Migrate.TutorialGuitarParts">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        >
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/pv_songimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/artistName"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/tutorial_guitar_pos_hand_back"/>
+
+        <TextView
+            android:id="@+id/guitarDesc"
+            android:layout_below="@+id/pv_songimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" When holding the neck of the guitar, place your thumb on the back of the neck to the top and in line with your second finger. Don’t bring your thumb over the top of the neck. With some songs you may need to bring your thumb over, but when you're just starting, keep your thumb behind."
+            android:justificationMode="inter_word"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+
+            android:lineSpacingExtra="8dp"
+            android:layout_marginTop="8sp"
+            android:layout_marginLeft="8sp"
+            android:layout_marginRight="8sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pv_songimage"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+</RelativeLayout>

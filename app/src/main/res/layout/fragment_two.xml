@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical"
+    tools:context=".Migrate.TutorialGuitarParts">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        >
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/pv_songimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/artistName"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/tutorial_guitar_left_leg"/>
+
+        <TextView
+            android:id="@+id/guitarDesc"
+            android:layout_below="@+id/pv_songimage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" The curve in the bottom of the guitar is resting on your left leg, this is the way classical guitarists hold their guitars. Some people find this way quite comfortable when playing an electric or acoustic guitar. You can see the head of the guitar is slightly higher and the neck is not so horizontal. This makes it easier when your fingers need to stretch over a long distance on the fretboard."
+            android:justificationMode="inter_word"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+
+            android:lineSpacingExtra="8dp"
+            android:layout_marginTop="8sp"
+            android:layout_marginLeft="8sp"
+            android:layout_marginRight="8sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pv_songimage"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+
+</RelativeLayout>
