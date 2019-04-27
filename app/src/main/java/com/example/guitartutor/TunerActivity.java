@@ -134,17 +134,19 @@ public class TunerActivity extends AppCompatActivity {
             @Override
             public void onPitchDetected(final float freq, double avgIntensity) {
 
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(context, String.format("%.02fHz", freq), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
                 final int index = mTuning.closestPitchIndex(freq);
                 final Pitch pitch = mTuning.pitches[index];
                 double interval = 1200 * Utils.log2(freq / pitch.frequency); // interval in cents
                 final float needlePos = (float) (interval / 100);
                 final boolean goodPitch = Math.abs(interval) < 5.0;
+
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(context, String.format("%.02fHz", freq) + " / " + pitch.name, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 runOnUiThread(new Runnable() {
                     @SuppressLint("DefaultLocale")
                     @Override
