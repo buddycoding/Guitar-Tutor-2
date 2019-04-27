@@ -18,6 +18,7 @@ package com.example.guitartutor;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -57,6 +59,7 @@ public class TunerActivity extends AppCompatActivity {
     private int mPitchIndex;
     private float mLastFreq;
 
+    Context context;
 
     @Override
     protected void onStart() {
@@ -131,6 +134,12 @@ public class TunerActivity extends AppCompatActivity {
             @Override
             public void onPitchDetected(final float freq, double avgIntensity) {
 
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(context, String.format("%.02fHz", freq), Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 final int index = mTuning.closestPitchIndex(freq);
                 final Pitch pitch = mTuning.pitches[index];
                 double interval = 1200 * Utils.log2(freq / pitch.frequency); // interval in cents
@@ -144,7 +153,6 @@ public class TunerActivity extends AppCompatActivity {
                         mNeedleView.setTickLabel(0.0F, String.format("%.02fHz", pitch.frequency));
                         mNeedleView.animateTip(needlePos);
                         mFrequencyView.setText(String.format("%.02fHz", freq));
-
 
                         final View goodPitchView = findViewById(R.id.good_pitch_view);
                         if (goodPitchView != null) {
@@ -178,6 +186,8 @@ public class TunerActivity extends AppCompatActivity {
     @SuppressLint("DefaultLocale")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        context = this;
+
         Utils.setupActivityTheme(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

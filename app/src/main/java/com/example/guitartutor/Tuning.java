@@ -64,7 +64,7 @@ public class Tuning {
                             new Pitch(82.41F, "E"),
                             new Pitch(110.00F, "A"),
                             new Pitch(146.83F, "D"),
-                            new Pitch(196.00F, "G"),
+                            new Pitch(195.99F, "G"),
                             new Pitch(246.94F, "B"),
                             new Pitch(329.63F, "E"),
                     });
