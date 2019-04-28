@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -27,11 +28,30 @@ import com.example.guitartutor.Utils;
 import com.github.airsaid.library.widget.Chord;
 import com.github.airsaid.library.widget.ChordView;
 
+import java.io.Console;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ChordsDetectActivity extends AppCompatActivity {
+
+    //c2 to c6
+    private final double[] noteFrequencies = new double[]{
+            65.4064, 69.2957,73.4162, 77.7817, 82.4069, 87.3071, 92.4986, 97.9989, 103.826, 110.000, 116.541, 123.471,
+            130.813, 138.591, 146.832, 155.563, 164.814, 174.614, 184.997, 195.998, 207.652, 220.000,233.082, 246.942,
+            261.626, 277.183, 293.665, 311.127, 329.628, 349.228, 369.994, 391.995,415.305, 440.000, 466.164, 493.883,
+            523.251, 554.365, 587.330, 622.254, 659.255, 698.456, 739.989, 783.991, 830.609, 880.000, 932.328, 987.767,
+            1046.50};
+
+    //e2 to g#4   fret open to 4 | string 6 to 1
+    private final double[] noteFrequencies2 = new double[]{
+            82.4069, 87.3071, 92.4986, 97.9989, 103.826,
+            110.000, 116.541, 123.471, 130.813, 138.591,
+            146.832, 155.563, 164.814, 174.614, 184.997,
+            195.998, 207.652, 220.000, 233.082, 246.942,
+            246.942, 261.626, 277.183, 293.665, 311.127,
+            329.628, 349.228, 369.994, 391.995, 415.305};
 
     private Button button1;
     private EditText chordText;
@@ -168,6 +188,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
     private void searchChord()
     {
         Boolean found = false;
+        int[] string = null;
+        int[] fret = null;
         for(QuestionsList list: chordList)
         {
             if(list.getName().equalsIgnoreCase(chordText.getText().toString()))
@@ -175,12 +197,40 @@ public class ChordsDetectActivity extends AppCompatActivity {
                 Chord chord = new Chord(list.getFret(), list.getString());
                 mChordView.setChord(chord);
                 found = true;
+
+                string = list.getString();
+                fret = list.getFret();
             }
         }
 
         if(!found)
         {
             Toast.makeText(this, "Chord not found.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            playChord(string, fret);
+        }
+    }
+
+    private void playChord(int[] string, int[] fret){
+        ArrayList<Integer> playIndex = new ArrayList<Integer>();
+
+        int index = -1;
+        int increment = 0;
+
+        for(int string2: string){
+            index++;
+            if(string2 > 0){
+                playIndex.add((increment * 5) + fret[index]);
+            }
+            else if(string2 == 0){
+                playIndex.add((increment * 5));
+            }
+            increment++;
+        }
+
+        for(Integer string2: playIndex) {
+            Log.w("Index", noteFrequencies2[string2] + "");
         }
     }
 
