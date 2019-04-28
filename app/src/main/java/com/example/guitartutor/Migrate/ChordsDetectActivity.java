@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +29,7 @@ import com.example.guitartutor.Utils;
 import com.github.airsaid.library.widget.Chord;
 import com.github.airsaid.library.widget.ChordView;
 
-import java.io.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -53,9 +52,12 @@ public class ChordsDetectActivity extends AppCompatActivity {
             246.942, 261.626, 277.183, 293.665, 311.127,
             329.628, 349.228, 369.994, 391.995, 415.305};
 
+    private ArrayList<String> instructions = new ArrayList<String>();
+
     private Button button1;
     private EditText chordText;
     private TextView mFrequencyView;
+    private LinearLayout ll_instructions;
 
     ChordView mChordView;
     ArrayList<QuestionsList> chordList = QuestionsList.createQuestionList();
@@ -154,6 +156,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
         chordText = findViewById(R.id.editTextChordName);
         mChordView = findViewById(R.id.chordView1);
         mFrequencyView = findViewById(R.id.frequency_view);
+        ll_instructions = findViewById(R.id.ll_instructions);
 
         button1 = findViewById(R.id.buttonSearch);
         button1.setOnClickListener(new View.OnClickListener() {
@@ -214,6 +217,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
 
     private void playChord(int[] string, int[] fret){
         ArrayList<Integer> playIndex = new ArrayList<Integer>();
+        instructions.clear();
+        ll_instructions.removeAllViews();
 
         int index = -1;
         int increment = 0;
@@ -222,22 +227,30 @@ public class ChordsDetectActivity extends AppCompatActivity {
             index++;
             if(string2 > 0){
                 playIndex.add((increment * 5) + fret[index]);
+                instructions.add("Play string number " + Math.abs(increment-6));
             }
             else if(string2 == 0){
                 playIndex.add((increment * 5));
+                instructions.add("Play string number " + Math.abs(increment-6));
             }
             increment++;
         }
 
         for(Integer string2: playIndex) {
-            Log.w("Index", noteFrequencies2[string2] + "");
+            //Log.w("Index", noteFrequencies2[string2] + "");
+        }
+
+        for(String instructions2: instructions) {
+            TextView tv = new TextView(context);
+            tv.setText(instructions2);
+            ll_instructions.addView(tv);
+            //Log.w("Index", instructions2 + "");
         }
     }
 
     private void startAudioProcessing() {
         if (mProcessing)
             return;
-
 
         mAudioProcessor = new AudioProcessor();
         mAudioProcessor.init();

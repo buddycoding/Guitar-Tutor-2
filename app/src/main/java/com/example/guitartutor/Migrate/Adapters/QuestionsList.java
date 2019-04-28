@@ -21,7 +21,7 @@ public class QuestionsList {
     public static ArrayList<QuestionsList> createQuestionList(){
         ArrayList<QuestionsList> chords = new ArrayList<>();
 
-        chords.add(new QuestionsList("d", new int[]{ -1, -1, 0, 2, 3, 2 }, new int[]{ 0, 0, 0, 1, 3, 2 }));
+        chords.add(new QuestionsList("d", new int[]{ -1, -1, 0, 2, 3, 2 }, new int[]{ -1, -1, 0, 1, 3, 2 }));
         chords.add(new QuestionsList("e", new int[]{ 0, 2, 2, 1, 0, 0 }, new int[]{ 0, 2, 3, 1, 0, 0 }));
         chords.add(new QuestionsList("g", new int[]{ 3,2,0,0,0,3 }, new int[]{ 2,1,0,0,0,3 }));
 
