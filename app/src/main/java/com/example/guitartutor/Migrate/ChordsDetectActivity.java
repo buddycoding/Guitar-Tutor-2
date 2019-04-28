@@ -84,6 +84,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
     private float mLastFreq;
 
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    private ExecutorService mExecutor2 = Executors.newSingleThreadExecutor();
 
     Context context;
 
@@ -281,6 +282,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
                         public void run() {
                             TextView tv = findViewById(textviewID.get(y));
                             tv.setTypeface(null, Typeface.BOLD);
+                            tv.setText(tv.getText() + "("+ noteName[string2]+")");
                         }
                     });
 
@@ -318,8 +320,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
             }
         };
 
-        chordDetect = new Thread(runnable);
-        chordDetect.start();
+        mExecutor2.execute(runnable);
     }
 
     private void startAudioProcessing() {
