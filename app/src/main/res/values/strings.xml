@@ -39,7 +39,7 @@
     <string name="open_g_tuning_val" translatable="false">Open G</string>
     <string name="open_d_tuning_val" translatable="false">Open D</string>
     <string name="drop_d_tuning_val" translatable="false">Drop D</string>
-    
+
     <string-array name="pref_tuning_entries">
         <item>@string/standard_tuning</item>
         <item>@string/open_a_tuning</item>

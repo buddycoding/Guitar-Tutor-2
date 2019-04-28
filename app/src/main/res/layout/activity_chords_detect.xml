@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Migrate.ChordsDetectActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <EditText
+                android:id="@+id/editTextChordName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Enter Chord Name Here"
+                android:layout_weight="2"/>
+
+            <Button
+                android:id="@+id/buttonSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Search" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Search format:" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Root Note + (Sharp or None) + (Minor or None) + (7 or None)" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Example: C, C#m, C#, E7. Case is not sensitive." />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <com.github.airsaid.library.widget.ChordView
+                android:id="@+id/chordView1"
+                android:layout_width="195dp"
+                android:layout_height="300dp"
+
+                app:cv_barreAlpha="200"
+                app:cv_barreColor="@android:color/white"
+                app:cv_barreStrokeColor="@android:color/white"
+                app:cv_barreStrokeWidth="2dp"
+                app:cv_closedStringImage="@mipmap/ic_closed_string_black"
+                app:cv_emptyStringImage="@mipmap/ic_empty_string_black"
+                app:cv_fretTextColor="@android:color/darker_gray"
+                app:cv_fretTextOffsetX="10dp"
+                app:cv_fretTextSize="12sp"
+                app:cv_gridLineColor="@android:color/black"
+                app:cv_gridLineWidth="3dp"
+                app:cv_headColor="@android:color/black"
+                app:cv_headRadius="20dp"
+                app:cv_noteAlpha="200"
+                app:cv_noteColor="@android:color/black"
+                app:cv_noteRadius="16dp"
+                app:cv_noteStrokeColor="@android:color/white"
+                app:cv_noteStrokeWidth="2dp"
+                app:cv_noteTextColor="@android:color/white"
+                app:cv_noteTextSize="16sp"
+                app:cv_stringOffsetY="10dp"
+                android:layout_marginTop="40dp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/frequency_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

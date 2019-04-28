@@ -22,8 +22,8 @@ import android.content.Context;
  * Created by andry on 24/04/16.
  */
 public class Tuning {
-    String name;
-    Pitch[] pitches;
+    public String name;
+    public Pitch[] pitches;
 
     public Tuning(String name, Pitch[] pitches) {
         this.name = name;

@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button2;
     private Button button3;
     private Button button4;
+    private Button button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button4 = findViewById(R.id.button17);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChordsDetectActivity();
+            }
+        });
+
     }
 
     public void openChordSheetActivity () {
@@ -83,6 +92,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openQuestionsActivity () {
         Intent intent = new Intent (this, QuestionsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openChordsDetectActivity () {
+        Intent intent = new Intent (this, ChordsDetectActivity.class);
         startActivity(intent);
     }
     //comment for test commit
