@@ -170,7 +170,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
         });
 
 
-        mTuning = Tuning.getTuning(this, Preferences.getString(this, getString(R.string.pref_tuning_key), getString(R.string.standard_tuning_val)));
+        mTuning = Tuning.getTuning(this, "Custom");
         requestPermissions();
     }
 

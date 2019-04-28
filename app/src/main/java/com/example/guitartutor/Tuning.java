@@ -113,6 +113,40 @@ public class Tuning {
                             new Pitch(329.63F, "E"),
                     });
         }
+        else if (name.equals("Custom")) {
+            return new Tuning(name,
+                    new Pitch[]{
+                            new Pitch(82.4069F,"E2"),
+                            new Pitch(87.3071F,"F2"),
+                            new Pitch(92.4986F,"F#2"),
+                            new Pitch(97.9989F,"G2"),
+                            new Pitch(103.826F,"G#2"),
+                            new Pitch(110F,"A2"),
+                            new Pitch(116.541F,"A#2"),
+                            new Pitch(123.471F,"B2"),
+                            new Pitch(130.813F,"C3"),
+                            new Pitch(138.591F,"C#3"),
+                            new Pitch(146.832F,"D3"),
+                            new Pitch(155.563F,"D#3"),
+                            new Pitch(164.814F,"E3"),
+                            new Pitch(174.614F,"F3"),
+                            new Pitch(184.997F,"F#3"),
+                            new Pitch(195.998F,"G3"),
+                            new Pitch(207.652F,"G#3"),
+                            new Pitch(220F,"A3"),
+                            new Pitch(233.082F,"A#3"),
+                            new Pitch(246.942F,"B3"),
+                            new Pitch(261.626F,"C4 "),
+                            new Pitch(277.183F,"C#4"),
+                            new Pitch(293.665F,"D4"),
+                            new Pitch(311.127F,"D#4"),
+                            new Pitch(329.628F,"E4"),
+                            new Pitch(349.228F,"F4"),
+                            new Pitch(369.994F,"F#4"),
+                            new Pitch(391.995F,"G4"),
+                            new Pitch(415.305F,"G#4"),
+                    });
+        }
         return null;
     }
 
