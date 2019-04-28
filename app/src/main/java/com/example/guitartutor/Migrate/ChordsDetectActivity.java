@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +24,6 @@ import com.example.guitartutor.AudioProcessor;
 import com.example.guitartutor.DialogUtils;
 import com.example.guitartutor.Migrate.Adapters.QuestionsList;
 import com.example.guitartutor.Pitch;
-import com.example.guitartutor.Preferences;
 import com.example.guitartutor.R;
 import com.example.guitartutor.Tuning;
 import com.example.guitartutor.Utils;
@@ -52,12 +53,24 @@ public class ChordsDetectActivity extends AppCompatActivity {
             246.942, 261.626, 277.183, 293.665, 311.127,
             329.628, 349.228, 369.994, 391.995, 415.305};
 
-    private ArrayList<String> instructions = new ArrayList<String>();
+    private final String[] noteName = new String[]{
+            "E2", "F2", "F#2", "G2", "G#2",
+            "A2", "A#2", "B2", "C3", "C#3",
+            "D3", "D#3", "E3", "F3", "F#3",
+            "G3", "G#3", "A3", "A#3", "B3",
+            "B3", "C4 ", "C#4", "D4", "D#4",
+            "E4", "F4", "F#4", "G4", "G#4",
+    };
+
+    private ArrayList<String> instructions = new ArrayList<>();
+    private ArrayList<Integer> textviewID = new ArrayList<>();
 
     private Button button1;
     private EditText chordText;
     private TextView mFrequencyView;
     private LinearLayout ll_instructions;
+
+    private Thread chordDetect;
 
     ChordView mChordView;
     ArrayList<QuestionsList> chordList = QuestionsList.createQuestionList();
@@ -73,6 +86,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
 
     Context context;
+
+    private String pitchName;
 
     public static final String STATE_PITCH_INDEX = "pitch_index";
     public static final String STATE_LAST_FREQ = "last_freq";
@@ -215,6 +230,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceType")
     private void playChord(int[] string, int[] fret){
         ArrayList<Integer> playIndex = new ArrayList<Integer>();
         instructions.clear();
@@ -236,16 +252,74 @@ public class ChordsDetectActivity extends AppCompatActivity {
             increment++;
         }
 
-        for(Integer string2: playIndex) {
-            //Log.w("Index", noteFrequencies2[string2] + "");
-        }
-
+        textviewID.clear();
+        int x = 0;
         for(String instructions2: instructions) {
             TextView tv = new TextView(context);
             tv.setText(instructions2);
+            tv.setId(x);
+            textviewID.add(x);
             ll_instructions.addView(tv);
+            x++;
             //Log.w("Index", instructions2 + "");
         }
+
+
+        final ArrayList<Integer>  playIndex2 = playIndex;
+
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+
+                Boolean goodChord = false;
+                int x = 0;
+                for(final Integer string2: playIndex2) {
+                    //Log.w("Index", noteFrequencies2[string2] + "");
+
+                    final int y = x;
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            TextView tv = findViewById(textviewID.get(y));
+                            tv.setTypeface(null, Typeface.BOLD);
+                        }
+                    });
+
+                    pitchName = "";
+
+                    while(!pitchName.equals(noteName[string2])) {
+                        //startAudioProcessing();
+                        Log.w("Index", noteName[string2] + "");
+                    }
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            TextView tv = findViewById(textviewID.get(y));
+                            tv.setTypeface(null, Typeface.NORMAL);
+                            tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                            Toast.makeText(context, "String played properly.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    x++;
+                }
+
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(context, "CHORD OK", Toast.LENGTH_SHORT).show();
+
+                        TextView tv = new TextView(context);
+                        tv.setText("\nChord played properly!");
+                        tv.setTypeface(null, Typeface.BOLD);
+                        ll_instructions.addView(tv);
+                    }
+                });
+
+            }
+        };
+
+        chordDetect = new Thread(runnable);
+        chordDetect.start();
     }
 
     private void startAudioProcessing() {
@@ -268,7 +342,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
 
                 runOnUiThread(new Runnable() {
                     public void run() {
-                        Toast.makeText(context, String.format("%.02fHz", freq) + " / " + pitch.name, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context, String.format("%.02fHz", freq) + " / " + pitch.name, Toast.LENGTH_SHORT).show();
+                        pitchName = pitch.name;
                     }
                 });
 
@@ -279,7 +354,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
                         //mTuningView.setSelectedIndex(index, true);
                         //mNeedleView.setTickLabel(0.0F, String.format("%.02fHz", pitch.frequency));
                         //mNeedleView.animateTip(needlePos);
-                        mFrequencyView.setText(String.format("%.02fHz", freq));
+
+                        //mFrequencyView.setText(String.format("%.02fHz", freq));
 
                         final View goodPitchView = findViewById(R.id.good_pitch_view);
                         if (goodPitchView != null) {
