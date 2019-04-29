@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ChordsDetectActivity extends AppCompatActivity {
+public class ChordsDetectActivity extends AppCompatActivity{
 
     //c2 to c6
     private final double[] noteFrequencies = new double[]{
@@ -70,7 +70,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
     private TextView mFrequencyView;
     private LinearLayout ll_instructions;
 
-    private Thread chordDetect;
+    private Thread chordDetect = new Thread();
 
     ChordView mChordView;
     ArrayList<QuestionsList> chordList = QuestionsList.createQuestionList();
@@ -84,7 +84,7 @@ public class ChordsDetectActivity extends AppCompatActivity {
     private float mLastFreq;
 
     private ExecutorService mExecutor = Executors.newSingleThreadExecutor();
-    private ExecutorService mExecutor2 = Executors.newSingleThreadExecutor();
+    //private ExecutorService mExecutor2 = Executors.newSingleThreadExecutor();
 
     Context context;
 
@@ -92,6 +92,8 @@ public class ChordsDetectActivity extends AppCompatActivity {
 
     public static final String STATE_PITCH_INDEX = "pitch_index";
     public static final String STATE_LAST_FREQ = "last_freq";
+
+    private ChordsDetectProcessor mChordDetectProssor;
 
     @Override
     protected void onStart() {
@@ -108,12 +110,22 @@ public class ChordsDetectActivity extends AppCompatActivity {
             mAudioProcessor.stop();
             mProcessing = false;
         }
+
+        //mExecutor2.shutdown();
+        chordDetect.interrupt();
     }
 
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onBackPressed(){
+        //mExecutor2.shutdown();
+        chordDetect.interrupt();
+        super.onBackPressed();
     }
 
     private void requestPermissions() {
@@ -268,11 +280,12 @@ public class ChordsDetectActivity extends AppCompatActivity {
 
         final ArrayList<Integer>  playIndex2 = playIndex;
 
+        //mChordDetectProssor.m
+
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
 
-                Boolean goodChord = false;
                 int x = 0;
                 for(final Integer string2: playIndex2) {
                     //Log.w("Index", noteFrequencies2[string2] + "");
@@ -288,9 +301,17 @@ public class ChordsDetectActivity extends AppCompatActivity {
 
                     pitchName = "";
 
-                    while(!pitchName.equals(noteName[string2])) {
+                    while(!pitchName.equals(noteName[string2])){
                         //startAudioProcessing();
-                        Log.w("Index", noteName[string2] + "");
+                        Log.w("Index", "Thread Interrupted? " + chordDetect.isInterrupted());
+
+                        if(chordDetect.isInterrupted()){
+                            break;
+                        }
+                    }
+
+                    if(chordDetect.isInterrupted()){
+                        break;
                     }
 
                     runOnUiThread(new Runnable() {
@@ -306,21 +327,30 @@ public class ChordsDetectActivity extends AppCompatActivity {
                     x++;
                 }
 
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        Toast.makeText(context, "CHORD OK", Toast.LENGTH_SHORT).show();
+                if(!chordDetect.isInterrupted()) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Toast.makeText(context, "CHORD OK", Toast.LENGTH_SHORT).show();
 
-                        TextView tv = new TextView(context);
-                        tv.setText("\nChord played properly!");
-                        tv.setTypeface(null, Typeface.BOLD);
-                        ll_instructions.addView(tv);
-                    }
-                });
+                            TextView tv = new TextView(context);
+                            tv.setText("\nChord played properly!");
+                            tv.setTypeface(null, Typeface.BOLD);
+                            ll_instructions.addView(tv);
+                        }
+                    });
+                }
 
             }
         };
 
-        mExecutor2.execute(runnable);
+        chordDetect = new Thread(runnable);
+
+        if(chordDetect.isAlive()){
+            chordDetect.interrupt();
+        }
+
+        chordDetect.start();
+        //mExecutor2.execute(runnable);
     }
 
     private void startAudioProcessing() {
