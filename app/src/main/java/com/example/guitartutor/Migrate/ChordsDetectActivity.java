@@ -343,6 +343,8 @@ public class ChordsDetectActivity extends AppCompatActivity{
             }
         };
 
+        //
+
         chordDetect = new Thread(runnable);
 
         if(chordDetect.isAlive()){
