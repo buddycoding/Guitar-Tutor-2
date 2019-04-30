@@ -236,8 +236,8 @@ public class TunerActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+     /*@Override
+   public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
                 NavUtils.showSettingsActivity(this);
@@ -251,7 +251,7 @@ public class TunerActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main, menu);
         return true;
-    }
+    }*/
 
 
 }

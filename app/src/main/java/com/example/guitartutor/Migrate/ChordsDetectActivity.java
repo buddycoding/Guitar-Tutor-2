@@ -412,3 +412,4 @@ public class ChordsDetectActivity extends AppCompatActivity{
         mExecutor.execute(mAudioProcessor);
     }
 }
+/**/

@@ -25,6 +25,24 @@
             android:background="#0072bb">
 
             <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="SONGS LIST"
+                android:textAlignment="center"
+                android:textColor="#ffff"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText"
+                tools:layout_editor_absoluteY="100dp" />
+
+            <!--<TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -55,24 +73,9 @@
                 android:textColor="#ffff"
                 android:textSize="15sp"
                 tools:ignore="HardcodedText"
-                tools:layout_editor_absoluteY="53dp" />
+                tools:layout_editor_absoluteY="53dp" />-->
 
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textView6"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="SONGS"
-                android:textAlignment="center"
-                android:textColor="#ffff"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText"
-                tools:layout_editor_absoluteY="74dp" />
+
 
         </RelativeLayout>
 

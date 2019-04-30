@@ -11,11 +11,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textView5"
         android:layout_width="384dp"
         android:layout_height="38dp"
@@ -52,21 +52,22 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText" />-->
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="match_parent"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="How to play Guitar"
-            android:textColor="#ffff"
+            android:text="HOW TO PLAY GUITAR"
             android:textAlignment="center"
-            android:textSize="15sp"
+            android:textColor="#ffff"
+            android:textSize="30dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.666"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,11 +162,7 @@
             tools:ignore="HardcodedText"
             android:visibility="gone"/>
 
-        <Button
-            android:id="@+id/buttonhome"
-            android:layout_width="33dp"
-            android:layout_height="30dp"
-            android:background="@drawable/home" />
+
 
         <!--<android.support.design.widget.BottomNavigationView
             android:layout_width="match_parent"
@@ -173,5 +170,14 @@
             app:menu="@menu/navitem"/>-->
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonhome"
+        android:layout_width="33dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/home" />
 
 </RelativeLayout>
