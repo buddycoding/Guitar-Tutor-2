@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy/MM/dd");
         String strDate = mdformat.format(calendar.getTime());
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             int id= android.os.Process.myPid();
             android.os.Process.killProcess(id);
         }
+        */
     }
 
     public void openChordSheetActivity () {

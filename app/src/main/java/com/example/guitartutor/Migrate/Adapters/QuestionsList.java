@@ -45,6 +45,12 @@ public class QuestionsList {
         chords.add(new QuestionsList("b7", new int[]{ -1,2,1,2,0,2 }, new int[]{ -1,2,1,3,0,4 }));
 
 
+        chords.add(new QuestionsList("c#", new int[]{ -1,-1,-1,1,2,1 }, new int[]{ -1,-1,-1,1,3,2 }));
+        chords.add(new QuestionsList("c#m", new int[]{ 0,4,2,1,2,0 }, new int[]{ 0,4,2,1,3,0 }));
+        chords.add(new QuestionsList("d#m", new int[]{ -1,-1,0,2,3,1 }, new int[]{ -1,-1,0,2,3,1 }));
+        chords.add(new QuestionsList("g#m", new int[]{ 3,5,5,3,3,3 }, new int[]{ 1,2,3,1,1,1 }));
+        chords.add(new QuestionsList("a#", new int[]{ -1,1,3,3,3,1 }, new int[]{ -1,1,2,3,4,1 }));
+
         return chords;
     }
 }
