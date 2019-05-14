@@ -31,6 +31,15 @@ public class ChordsList {
         chords.add(new ChordsList("f7f9",  0));
         chords.add(new ChordsList("d7e7a7", 1));
         chords.add(new ChordsList("g7c7b7", 1));
+
+        //chords new
+
+        chords.add(new ChordsList("cscsm", 1));
+        chords.add(new ChordsList("dsdsm", 0));
+        chords.add(new ChordsList("fsfsm", 1));
+        chords.add(new ChordsList("gsgsm", 0));
+        chords.add(new ChordsList("asasm", 1));
+
         return chords;
     }
 }

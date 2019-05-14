@@ -41,6 +41,7 @@ public class ChordsSoundsActivity extends AppCompatActivity {
         chordsNameTV = chordsNameTV.replaceAll(" M", "m");
         chordsNameTV = chordsNameTV.replaceAll(" 7", "7");
         chordsNameTV = chordsNameTV.replaceAll(" 9", "9");
+        chordsNameTV = chordsNameTV.replaceAll(" S", "#");
         chordsName.setText(chordsNameTV);
 
         ImageView imageView =  findViewById(R.id.chords_sounds_image);
@@ -70,6 +71,10 @@ public class ChordsSoundsActivity extends AppCompatActivity {
                             setFileNamePost(filename);
                             break;
                 case "9":   btnList.get(btnList.size()-1).setText(btnList.get(btnList.size()-1).getText() +"9");
+                            //setFileName(btnList.size()-1, filename + btnList.get(btnList.size()-1).getText().toString().toLowerCase().replace("play ",""));
+                            setFileNamePost(filename);
+                            break;
+                case "s":   btnList.get(btnList.size()-1).setText(btnList.get(btnList.size()-1).getText() + "#");
                             //setFileName(btnList.size()-1, filename + btnList.get(btnList.size()-1).getText().toString().toLowerCase().replace("play ",""));
                             setFileNamePost(filename);
                             break;
