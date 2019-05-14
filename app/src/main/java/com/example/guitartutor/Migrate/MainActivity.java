@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy/MM/dd");
         String strDate = mdformat.format(calendar.getTime());
 
-        String sDate3="2019/05/11";
+        String sDate3="2019/05/14";
 
         //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1, new ParsePosition(0));
         //String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date("2019/05/10"));
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             int id= android.os.Process.myPid();
             android.os.Process.killProcess(id);
         }
-        */
+
     }
 
     public void openChordSheetActivity () {
