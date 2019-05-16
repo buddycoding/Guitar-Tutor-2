@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy/MM/dd");
         String strDate = mdformat.format(calendar.getTime());
 
-        String sDate3="2019/05/14";
+        String sDate3="2019/05/16";
 
         //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1, new ParsePosition(0));
         //String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date("2019/05/10"));
