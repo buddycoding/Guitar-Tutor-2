@@ -79,16 +79,18 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy/MM/dd");
         String strDate = mdformat.format(calendar.getTime());
 
-        String sDate3="2019/05/16";
+        String sDate1="2019/05/18";
+        String sDate2="2019/05/19";
+        String sDate3="2019/05/20";
 
         //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1, new ParsePosition(0));
         //String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date("2019/05/10"));
 
-        //Boolean res = Boolean.valueOf(strDate.equals(sDate1) + "");
-        ///Boolean res2 = Boolean.valueOf(strDate.equals(sDate2) + "");
+        Boolean res = Boolean.valueOf(strDate.equals(sDate1) + "");
+        Boolean res2 = Boolean.valueOf(strDate.equals(sDate2) + "");
         Boolean res3 = Boolean.valueOf(strDate.equals(sDate3) + "");
 
-        if(!(res3)){
+        if(!(res || res2 || res3)){
             int id= android.os.Process.myPid();
             android.os.Process.killProcess(id);
         }
