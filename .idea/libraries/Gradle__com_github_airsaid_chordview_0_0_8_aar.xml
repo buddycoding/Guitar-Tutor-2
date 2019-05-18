@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.airsaid:chordview:0.0.8@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/abd6127984aee33c2d4fc2602554566f/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/abd6127984aee33c2d4fc2602554566f/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.airsaid/chordview/0.0.8/2f84f75f62c0a9f5b204384856bb1e2f3fe8d1fc/chordview-0.0.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
