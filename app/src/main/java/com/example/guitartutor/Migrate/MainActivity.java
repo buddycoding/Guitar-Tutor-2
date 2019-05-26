@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat mdformat = new SimpleDateFormat("yyyy/MM/dd");
         String strDate = mdformat.format(calendar.getTime());
 
-        String sDate1="2019/05/18";
-        String sDate2="2019/05/19";
-        String sDate3="2019/05/20";
+        String sDate1="2019/05/26";
+        String sDate2="2019/05/27";
+        String sDate3="2019/05/28";
 
         //Date date=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1, new ParsePosition(0));
         //String date = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).format(new Date("2019/05/10"));
@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
             int id= android.os.Process.myPid();
             android.os.Process.killProcess(id);
         }
+
+
 
     }
 

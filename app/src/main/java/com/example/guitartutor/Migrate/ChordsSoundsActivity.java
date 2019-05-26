@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -58,7 +59,8 @@ public class ChordsSoundsActivity extends AppCompatActivity {
         {
             String textChordName = chordsNameString.charAt(x) + "";
 
-            final String chordSoundName = chordsNameString.charAt(x) + "";
+            //final String chordSoundName = chordsNameString.charAt(x) + "";
+            String chordSoundName = chordsNameString.charAt(x) + "";
             final String filename = "android.resource://" + this.getPackageName() + "/raw/"; //issue wrong file pointer for fixing
 
             switch (chordsNameString.charAt(x) + ""){
@@ -150,11 +152,14 @@ public class ChordsSoundsActivity extends AppCompatActivity {
                 try { media.setDataSource(getApplicationContext(), Uri.parse(filename)); } catch (Exception e) {}
                 try { media.prepare(); } catch (Exception e) {}
                 media.start();
+
             }
         });
     }
 
     private void setFileNamePost(String filename){
-        setFileName(btnList.size()-1, filename + btnList.get(btnList.size()-1).getText().toString().toLowerCase().replace("play ",""));
+        //setFileName(btnList.size()-1, filename + btnList.get(btnList.size()-1).getText().toString().toLowerCase().replace("play ",""));
+        setFileName(btnList.size()-1, filename + btnList.get(btnList.size()-1).getText().toString().toLowerCase().replace("play ","").replace("#", "s"));
+
     }
 }

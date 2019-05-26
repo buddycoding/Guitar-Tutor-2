@@ -49,7 +49,8 @@ public class QuestionsList {
         chords.add(new QuestionsList("c#m", new int[]{ 0,4,2,1,2,0 }, new int[]{ 0,4,2,1,3,0 }));
 
         chords.add(new QuestionsList("d#", new int[]{ -1,-1,-1,3,4,3 }, new int[]{ -1,-1,-1,1,3,2 }));
-        chords.add(new QuestionsList("d#m", new int[]{ -1,-1,0,2,3,1 }, new int[]{ -1,-1,0,2,3,1 }));
+        //chords.add(new QuestionsList("d#m", new int[]{ -1,-1,0,2,3,1 }, new int[]{ -1,-1,0,2,3,1 }));
+        chords.add(new QuestionsList("d#m", new int[]{ -1,-1,1,3,4,2 }, new int[]{ -1,-1,1,3,4,2 }));
 
         chords.add(new QuestionsList("f#", new int[]{ -1,-1,-1,3,2,2 }, new int[]{ -1,-1,-1,2,1,1 }));
         chords.add(new QuestionsList("f#m", new int[]{ -1,-1,-1,2,2,2 }, new int[]{ -1,-1,-1,1,2,3}));
