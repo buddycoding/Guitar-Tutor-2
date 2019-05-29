@@ -70,6 +70,14 @@ public class GuitarTutorialActivity extends AppCompatActivity {
                 openGuitarFinger();
             }
         });
+
+        button4 = findViewById(R.id.button17);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openChordsDetectActivity();
+            }
+        });
     }
 
     public void openGuitarParts () {
@@ -95,5 +103,10 @@ public class GuitarTutorialActivity extends AppCompatActivity {
     public void openGuitarFinger () {
         //Intent intent = new Intent (this, TutorialGuitarHolding.class);
         //startActivity(intent);
+    }
+
+    public void openChordsDetectActivity () {
+        Intent intent = new Intent (this, ChordsDetectActivity.class);
+        startActivity(intent);
     }
 }
